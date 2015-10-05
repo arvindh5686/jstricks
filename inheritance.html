@@ -1,0 +1,89 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<script>
+//Create and define Adult.
+function Adult(name) {
+  this.name = name
+}
+
+Adult.prototype.name = "";
+
+Adult.prototype.getName = function() {
+  console.log(this.name);
+}
+
+Adult.prototype.speak = function(){
+  console.log('I am an adult!');
+};
+Adult.prototype.workDay= function(){
+   console.log('I have to go to work.');
+};
+
+// Create and define Student.
+function Student(name) {
+  // Call the Adult function.
+  Adult.call(this, name);
+}
+
+// Tell Student to inherit Adult.
+Student.prototype = new Adult();
+
+
+// Change the workDay method.
+Student.prototype.workDay= function(){
+  console.log('I have to do my homework.');
+}
+
+// add speakGoodbye method
+Student.prototype.speakGoodbye= function(){
+  console.log('I am going to the library. Goodbye.');
+}
+
+
+var studentA = new Student("Arvin");
+var studentB = new Student("da");
+studentA.getName();
+studentB.getName();
+studentA.workDay();
+studentA.speak();
+studentA.speakGoodbye();
+
+// To check for inheritance:
+console.log(studentA instanceof Adult);
+// Returns true. 
+console.log(studentA instanceof Student);
+// Returns true.
+
+
+
+function change() {
+  var div1 = $('#div1');
+  var div2 = $('#div2');
+
+  var a1 = div1.find('a');
+  var a2 = div2.find('a');
+  
+  div1.append(a2);
+  div2.append(a1);
+
+  div1.animate({left:'250px'});
+  div2.animate({left:'250px'});
+}
+
+</script>
+
+<body>
+<div>
+<div id="div1" style="display:inline; position:relative">
+<a href="http://www.google.com">Google</a>
+</div>
+
+<div id="div2"  style="display:inline; position:relative">
+<a href="http://www.facebook.com">Facebook</a>
+</div>
+</div>
+<input type="button" value="Submit" onclick="change()"/>
+</body>
+</html>
