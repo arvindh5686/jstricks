@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<script>
+$( document ).ready(function() {
+    var fn = debounce(click, 2000);
+    $('#test').click(fn);
+
+    function debounce(cb, t) {
+      var val;
+      return function() {
+        clearTimeout(val);
+        val = setTimeout(cb, t);
+      };
+    }
+
+    function click() {
+      console.log("hello")
+    }
+});
+
+</script>
+
+<body>
+<input id="test" type="button" value="Submit"/>
+</body>
+</html>
