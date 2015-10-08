@@ -1,5 +1,5 @@
-promises:
 
+//promises
 var promise = new Promise(function(resolve, reject) {
   resolve(1);
 });
@@ -11,8 +11,7 @@ promise.then(function(val) {
   console.log(val); // 3
 });
 
-async-waterfall:
-
+//async-waterfall
 var fn1 = function(callback) {
             fs.stat(path, function(err, stats) {
                 if (stats == undefined) { callback(null); }
